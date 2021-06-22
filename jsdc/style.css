@@ -1,0 +1,32 @@
+.acAmount{
+    padding: 7px ;
+}
+.buyAutoClicker{
+    display: flex;
+    flex-direction: row;
+    padding: 7px;
+    max-width: fit-content;
+}
+.buyDonutX{
+    display: flex;
+    flex-direction: row;
+    padding: 7px;
+    width: fit-content;
+}
+.donutClicker{
+    display: flex;
+    flex-direction: row;
+    padding: 7px;
+    width: fit-content;
+}
+.donutAmount{
+    padding: 7px ;
+    
+}
+.dXAmount{
+    padding: 7px ;
+}
+.navMenu{
+    padding: 7px;
+}
+

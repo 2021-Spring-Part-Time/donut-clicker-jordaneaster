@@ -65,10 +65,17 @@ function updateAutoClickerCount(){
   checkFundsToBuyAutoClicker();
   checkFundsToBuyDonutX();
 }
+function updateDonutXValue(){
+  const dXValue = document.querySelector('.displayDxValue');
+  dXValue.innerHTML = donutMaker.getDonutXValue();
+  
+
+}
 function updateAllCounts(){
   updateDonutCount();
   updateAutoClickerCount();
   updateDonutXCount();
+  updateDonutXValue();
 }
 
 

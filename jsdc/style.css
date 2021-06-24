@@ -29,4 +29,20 @@
 .navMenu{
     padding: 7px;
 }
-
+.donutX {
+    display: flex;
+    flex-direction: column;
+    padding: 6px;
+}
+.displayDonuts{
+    padding: 6px;
+}
+.displayAc{
+    padding: 6px;
+}
+.displayDx{
+    padding: 6px;
+}
+.displayDxValue{
+    padding: 6px;
+}

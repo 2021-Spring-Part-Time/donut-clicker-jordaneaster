@@ -6,20 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="jsdc\style.css">
     <title>Donut Clicker</title>
+    <style>
+      body {
+        background-image: url('images\setyaki-irham-VFZHLMlHW1M-unsplash.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+      }
+      </style>
   </head>
   <body>
     <div class="container">
-      <header class="mainHeader">
+      
         <nav class="navMenu">
-          <button type="button" id="fredInfo">
+          <a class="userButtons" href="#home">Home</a>
+          <a class="userButtons" href="#My Profile">My Profile</a>
+          <a class="userButtons" href="#shop">Freds Donut Shop</a>
+        </nav>
+
+          <header class="mainHeader">
+          <button type="button" class="headerButtons">
             Fred The Baker Banking Company
           </button>
-          <button type="button" id="cookieClicker">Cookie Clicker 2020</button>
-          <button type="button" id="about">About The Creator</button>
-        </nav>
-        <!-- <div class="fredClass">
+          <button type="button" class="headerButtons">
+            Cookie Clicker 2020
+          </button>
+          <button type="button" class="headerButtons"
+          >About The Creator
+        </button>
+      
+        
+        <div class="fredClass" hidden>
           <h1>Fred The Baker Baking Co.</h1>
-          <a data-toggle="collapse">
+          <a  id="fredsBio">
             Fred The Baker Baking Company&copy; has been in service for over 50 years,
             and features the infamous 'Mushpuppy Donut', if you haven't tried
             one you are really missing out! As part of this long tenured history
@@ -29,22 +49,22 @@
           </a>
         </div>
 
-        <div class="cookieClass">
-          <a data-toggle="collapse">
+        <div class="cookieClass" hidden>
+          <a  id="ccBio">
             <h1>Cookie Clicker est. 2020</h1>
             The inspiration for Donut maker comes from a game started in 2020
             called Cookie Clicker&copy;! In Cookie Clicker, users are able to click
             to earn cookies, with rewards for a certain amount of clicks as well as all types of bells and whistles to make the game enjoyable for the user. Therefore, in rememberance of Cookie Clicker the 2021 Spring Cohort presents to you Donut-Maker&copy;
-          </a> -->
+          </a>
         </div>
-        <div class="aboutClass">
-          <a data-toggle="collapse">
+        
+        <div class="aboutClass" hidden id="myBio">
+          <a>
             <h1>About The Creator</h1>
             <p id="myInfo">
              <h2>Jordan Erik Easter</h2> 
              <h3>jordaneaster222@icloud.com</h3>
               <a href="https://github.com/jordaneaster">GitHub</a>
-
             <a href="https://www.linkedin.com/in/jordan-erik-easter/">LinkedIn</a>
             </p>
           </a>
@@ -65,19 +85,19 @@
           Buy Auto Clicker
         </button>
         <span class="displayAc">My Auto Clickers:</span> 
-        <div class="acAmount">
-        </div>
+        <div class="acAmount"></div>
+        <button class="activateAc" disabled>Activate Auto Clicker</button>
       </section>
       <section class="donutX">
         <button class="buyDonutX" disabled>
           Buy Donut Multiplier
         </button>
+        <p>DonutX Value:</p>
+        <span class="displayDxValue"></span>
         <span class="displayDx">My DonutX:</span>
-        <span class="displayDxValue">DonutX Value:</span>
         <div class="dxAmount">
-           
-
         </div>
+        
       </section>
     </main>
     <script src="jsdc\index.js"></script>

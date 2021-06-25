@@ -3,9 +3,13 @@ import DonutMaker from "../donutMaker";
 const navMenu = document.getElementById("fredInfo");
 document.getElementById("cookieClicker"), document.getElementById("about");
 
-let fredButton = document.getElementById("fredInfo");
-let cookieButton = document.getElementById("cookieClicker");
-let aboutButton = document.getElementById("about");
+let fredOption = document.getElementById("fredsMenuButton");
+let cookieOption = document.getElementById("cookieMenuButton");
+let myOption = document.getElementById("myMenuButton");
+
+let fredButton = document.getElementById("fredsBio");
+let cookieButton = document.getElementById("ccBio");
+let aboutButton = document.getElementById("myBio");
 
 fredButton.addEventListener("click", () => {
   var fredsClass = document.querySelector(".fredClass");
@@ -15,6 +19,7 @@ fredButton.addEventListener("click", () => {
     fredsClass.style.display = "none";
   }
 });
+
 
 cookieButton.addEventListener("click", () => {
   var cookieClass = document.querySelector(".cookieClass");
@@ -44,79 +49,101 @@ const donutClicker = document.querySelector(".donutClicker"),
 //donut maker object
 const donutMaker = new DonutMaker();
 
-
-
 //update counts
-function updateDonutCount(){
+function updateDonutCount() {
   const donutCount = document.querySelector(".donutAmount");
   donutCount.innerHTML = donutMaker.returnDonuts();
   checkFundsToBuyAutoClicker();
   checkFundsToBuyDonutX();
 }
-function updateDonutXCount(){
+function updateDonutXCount() {
   const dxAmount = document.querySelector(".dxAmount");
   dxAmount.innerHTML = donutMaker.returnDonutX();
   checkFundsToBuyAutoClicker();
   checkFundsToBuyDonutX();
 }
-function updateAutoClickerCount(){
+function updateAutoClickerCount() {
   const dxAmount = document.querySelector(".acAmount");
   dxAmount.innerHTML = donutMaker.returnAutoClickers();
   checkFundsToBuyAutoClicker();
   checkFundsToBuyDonutX();
 }
-function updateDonutXValue(){
-  const dXValue = document.querySelector('.displayDxValue');
+function updateDonutXValue() {
+  const dXValue = document.querySelector(".displayDxValue");
   dXValue.innerHTML = donutMaker.getDonutXValue();
-  
-
 }
-function updateAllCounts(){
+function updateAutoclickerActivation() {
+  const activate = document.querySelector(".activateAc");
+  activate.innerHTML = donutMaker.checkAvailabilityOfActivateAc();
+}
+function updateAllCounts() {
   updateDonutCount();
   updateAutoClickerCount();
   updateDonutXCount();
   updateDonutXValue();
+  updateAutoclickerActivation();
 }
 
+function activateAc() {
+  window.setInterval(() => {
+    donutMaker.autoClick();
+    updateAllCounts();
+  }, 1000);
+}
+
+const activateBtn = document.querySelector(".activateAc");
+
+//click to activate auto clicker
+activateBtn.addEventListener("click", () => {
+  checkAvailabilityOfActivateAc();
+  activateAc();
+  updateAllCounts();
+});
 
 //click to make donut button
 donutClicker.addEventListener("click", () => {
   donutMaker.clickDonutButton();
-  displayMyDonuts();
   updateDonutCount();
 });
-
 //click to buy autoclickers
 autoClicker.addEventListener("click", () => {
   checkFundsToBuyAutoClicker();
   donutMaker.buyAutoclicker();
+  checkAvailabilityOfActivateAc();
   updateAllCounts();
-  displayMyAutoClickers();
 });
 //click to buy donutX
 donutX.addEventListener("click", () => {
   checkFundsToBuyDonutX();
   donutMaker.buyDonutX();
   updateAllCounts();
-  displayDonutX();
 });
 
 //check funds to buy auto clicker
-function checkFundsToBuyAutoClicker(){
+function checkFundsToBuyAutoClicker() {
   const autoClicker = document.querySelector(".buyAutoClicker");
-  if(donutMaker.insufficientFunds()){
+  if (donutMaker.insufficientFunds()) {
     autoClicker.disabled = true;
-  } else{
-    autoClicker.disabled = false
+  } else {
+    autoClicker.disabled = false;
   }
 }
-//check funds to buy donut x 
-function checkFundsToBuyDonutX(){
+//check funds to buy donut x
+function checkFundsToBuyDonutX() {
   const donutX = document.querySelector(".buyDonutX");
-  if(donutMaker.insufficientFundsX()){
+  if (donutMaker.insufficientFundsX()) {
     donutX.disabled = true;
-  } else{
-    donutX.disabled = false
+  } else {
+    donutX.disabled = false;
+  }
+}
+//check availability to activate auto clickers
+function checkAvailabilityOfActivateAc() {
+  const activateAcBtn = document.querySelector(".activateAc");
+  if (donutMaker.returnAutoClickers() >= 1) {
+    activateAcBtn.disabled = false;
+  } else {
+    activateAcBtn.disabled = true;
   }
 }
 //display autoclickers

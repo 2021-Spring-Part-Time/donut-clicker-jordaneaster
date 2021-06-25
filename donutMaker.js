@@ -7,6 +7,9 @@ class DonutMaker {
     this.donutXCost = 10;
   }
   //click add/buy buttons
+  // activateAutoclicker(){
+  //   if(this.myAutoClickers>=1) this.autoClick();
+  // }
   clickDonutButton() {
     this.myDonuts += 1 * this.getDonutXValue();
   }
@@ -21,7 +24,7 @@ class DonutMaker {
     this.increaseDonutXCost();
   }
   autoClick() {
-    for (let i = 0; i < this.myAutoClicker; i++) {
+    for (let i = 0; i < this.myAutoClickers; i++) {
       this.clickDonutButton();
     }
   }
@@ -31,7 +34,7 @@ class DonutMaker {
     return Math.round(this.myDonuts);
   }
   returnAutoClickers() {
-    return Math.round(this.myAutoClickers);
+    return (this.myAutoClickers);
   }
   returnDonutX() {
     return Math.round(this.myDonutX);
@@ -43,7 +46,7 @@ class DonutMaker {
     return Math.round(this.donutXCost);
   }
   getDonutXValue(){
-    return Math.abs(Math.pow(1.2,this.myDonutX));
+    return Math.pow(1.2,this.myDonutX);
   }
 
   //increases
@@ -56,9 +59,7 @@ class DonutMaker {
   increaseDonutXDonutCount() {
     return this.myDonuts + Math.pow(1.2, this.myDonutX);
   }
-  increaseDonutsEarnedPerClick() {
-    this.myDonuts += this.increaseDonutXDonutCount();
-  }
+
 
   //clicker calculations-sufficient funds
   subtractDonutsToBuyAutoClicker() {
@@ -73,6 +74,10 @@ class DonutMaker {
   insufficientFundsX() {
     return this.myDonuts < this.donutXCost;
   }
+  insufficientClickersToActivate(){
+    return this.myAutoClickers;
+  }
+  
 
   autoClickerFundsChecker() {
     if (this.insufficientFunds()) {
@@ -82,10 +87,17 @@ class DonutMaker {
     }
   }
   donutXFundsChecker() {
-    if (this.insufficientFunds()) {
-      throw new Error("insufficient donuts to buy auto clicker");
+    if (this.insufficientFundsX()) {
+      throw new Error("insufficient donuts to buy multiplier");
     } else {
       this.buyDonutX();
+    }
+  }
+  activateAcChecker(){
+    if(!this.myAutoClickers>=1){
+      throw new Error('')
+    } else{
+      this.autoClick();
     }
   }
 }

@@ -1,32 +1,76 @@
-.acAmount{
-    padding: 7px ;
+.acAmount {
+  padding: 7px;
 }
-.buyAutoClicker{
-    display: flex;
-    flex-direction: row;
-    padding: 7px;
-    max-width: fit-content;
+.activateAc {
+  display: flex;
+  flex-direction: row;
+  padding: 7px;
+  width: fit-content;
 }
-.buyDonutX{
-    display: flex;
-    flex-direction: row;
-    padding: 7px;
-    width: fit-content;
+.buyAutoClicker {
+  display: flex;
+  flex-direction: row;
+  padding: 7px;
+  max-width: fit-content;
 }
-.donutClicker{
-    display: flex;
-    flex-direction: row;
-    padding: 7px;
-    width: fit-content;
+.buyDonutX {
+  display: flex;
+  flex-direction: row;
+  padding: 7px;
+  width: fit-content;
 }
-.donutAmount{
-    padding: 7px ;
-    
+#donutImage {
+  width: 650px;
 }
-.dXAmount{
-    padding: 7px ;
+.donutClicker {
+  display: flex;
+  flex-direction: row;
+  padding: 7px;
+  width: fit-content;
+  border-radius: 10px;
+  background-color: aqua;
 }
-.navMenu{
-    padding: 7px;
+.donutAmount {
+  padding: 7px;
 }
-
+.dXAmount {
+  padding: 7px;
+}
+.navMenu {
+  padding: 7px;
+}
+.donutX {
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+}
+.displayDonuts {
+  padding: 6px;
+}
+.displayAc {
+  padding: 6px;
+}
+.displayDx {
+  padding: 6px;
+}
+.displayDxValue {
+  padding: 6px;
+}
+.headerButtons {
+  padding: 7px;
+  border-radius: 10px;
+  background-color: aqua;
+}
+.navMenu {
+  display: flex;
+  flex-direction: row;
+  padding: 6px;
+}
+.mainHeader {
+  display: flex;
+  flex-direction: row;
+  padding: 6px;
+}
+.userButtons {
+  padding: 6px;
+}

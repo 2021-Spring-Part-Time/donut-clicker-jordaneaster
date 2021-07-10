@@ -1,42 +1,108 @@
-import DonutMaker from "../donutMaker";
+import DonutMaker from "../donutMaker.js";
+import Menu from "./menu.js";
 
-const navMenu = document.getElementById("fredInfo");
-document.getElementById("cookieClicker"), document.getElementById("about");
+let fredButton = document.getElementById("fredButton");
+let cookieButton = document.getElementById("cookieButton");
+let aboutButton = document.getElementById("myButton");
+const gameMenu = document.getElementsByTagName("option"),
+  optionsDropMenu = document.getElementById("myGame"),
+  newGameOption = document.getElementById("newGame"),
+  saveGameOption = document.getElementById("saveGame"),
+  buySprinklesOption = document.getElementById("buySprinkles"),
+  buyCoffeeOption = document.getElementById("buyCoffee"),
+  payItForwardOption = document.getElementById("payItForward");
+const mainMenu = new Menu();
+function displayWallet() {
+  let money = document.getElementById("money");
+  money.innerHTML = mainMenu.getWallet();
+}
+function displayCupsOfCoffee() {
+  let coffee = document.getElementById("java");
+  coffee.innerHTML = mainMenu.getCoffee();
+}
 
-let fredOption = document.getElementById("fredsMenuButton");
-let cookieOption = document.getElementById("cookieMenuButton");
-let myOption = document.getElementById("myMenuButton");
+const colors = ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"];
 
-let fredButton = document.getElementById("fredsBio");
-let cookieButton = document.getElementById("ccBio");
-let aboutButton = document.getElementById("myBio");
+const random = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+};
 
-fredButton.addEventListener("click", () => {
-  var fredsClass = document.querySelector(".fredClass");
-  if (fredsClass.style.display === "none") {
-    fredsClass.style.display = "block";
-  } else {
-    fredsClass.style.display = "none";
+function createSprinkles() {
+  if (mainMenu.sprinkles >=1) {
+    const main = document.querySelector('.mainGameButtons');
+    const confettiAmount = 200;
+
+    for (let i = 0; i < confettiAmount; i++) {
+      let dot = document.createElement("div");
+      dot.className = "confetti";
+      dot.style.setProperty("--endX", random(-300, 300) + "px");
+      dot.style.setProperty("--endY", random(-200, 200) + "px");
+      dot.style.setProperty("--s", random(0.5, 1) + "");
+      dot.style.setProperty("--color", colors[random(0, 4)]);
+      main.appendChild(dot);
+    }
+  }
+}
+
+optionsDropMenu.addEventListener("change", () => {
+  if (gameMenu[1].selected) {
+    newGame();
+    updateAllCounts();
+  }
+  if (gameMenu[3].selected) {
+    mainMenu.buySprinkles();
+    displayWallet();
+    createSprinkles();
+  }
+  if (gameMenu[4].selected) {
+    mainMenu.buycoffee();
+    displayCupsOfCoffee();
+    displayWallet();
   }
 });
 
+function FredsInformation() {
+  var navBtnContent;
+  navBtnContent = document.querySelector(".fredClass");
+
+  if (navBtnContent.style.display === "none") {
+    navBtnContent.style.display = "block";
+  } else {
+    navBtnContent.style.display = "none";
+  }
+}
+function CookieInformation() {
+  var navBtnContent;
+  navBtnContent = document.querySelector(".cookieClass");
+
+  if (navBtnContent.style.display === "none") {
+    navBtnContent.style.display = "block";
+  } else {
+    navBtnContent.style.display = "none";
+  }
+}
+
+function CreatorInformation() {
+  var navBtnContent;
+  navBtnContent = document.querySelector(".aboutClass");
+
+  if (navBtnContent.style.display === "none") {
+    navBtnContent.style.display = "block";
+  } else {
+    navBtnContent.style.display = "none";
+  }
+}
+
+fredButton.addEventListener("click", () => {
+  FredsInformation();
+});
 
 cookieButton.addEventListener("click", () => {
-  var cookieClass = document.querySelector(".cookieClass");
-  if (cookieClass.style.display === "none") {
-    cookieClass.style.display = "block";
-  } else {
-    cookieClass.style.display = "none";
-  }
+  CookieInformation();
 });
 
 aboutButton.addEventListener("click", () => {
-  var aboutClass = document.querySelector(".aboutClass");
-  if (aboutClass.style.display === "none") {
-    aboutClass.style.display = "block";
-  } else {
-    aboutClass.style.display = "none";
-  }
+  CreatorInformation();
 });
 
 const donutClicker = document.querySelector(".donutClicker"),
@@ -74,8 +140,39 @@ function updateDonutXValue() {
 }
 function updateAutoclickerActivation() {
   const activate = document.querySelector(".activateAc");
-  activate.innerHTML = donutMaker.checkAvailabilityOfActivateAc();
+  // activate.innerHTML = checkAvailabilityOfActivateAc();
+  checkAvailabilityOfActivateAc();
 }
+
+let gameDiv = document.querySelector("#aNewGame");
+
+function newGame() {
+  donutMaker.resetGame();
+  updateAllCounts();
+  let gameOverSign = document.createElement("div");
+  gameOverSign.setAttribute("id", "endGame");
+  gameDiv = document.querySelector("#aNewGame");
+
+  gameOverSign.innerText = "GAME OVER...";
+  gameDiv.appendChild(gameOverSign);
+}
+let gameOverSign = document.createElement("div");
+gameOverSign.setAttribute("id", "endGame");
+gameDiv = document.querySelector("#aNewGame");
+
+function updateGameOverSign() {
+  const menuDiv = document.querySelector(".gameOptions"),
+    reset = document.getElementById("aNewGame");
+  window.setImmediate(() => {
+    menuDiv.removeChild(reset);
+  }, 2000);
+}
+function deleteGameOverSign() {
+  window.setImmediate(() => {
+    updateGameOverSign();
+  }, 2000);
+}
+
 function updateAllCounts() {
   updateDonutCount();
   updateAutoClickerCount();
@@ -104,6 +201,7 @@ activateBtn.addEventListener("click", () => {
 donutClicker.addEventListener("click", () => {
   donutMaker.clickDonutButton();
   updateDonutCount();
+  deleteGameOverSign();
 });
 //click to buy autoclickers
 autoClicker.addEventListener("click", () => {
@@ -140,7 +238,7 @@ function checkFundsToBuyDonutX() {
 //check availability to activate auto clickers
 function checkAvailabilityOfActivateAc() {
   const activateAcBtn = document.querySelector(".activateAc");
-  if (donutMaker.returnAutoClickers() >= 1) {
+  if (donutMaker.returnAutoClickers() > 0) {
     activateAcBtn.disabled = false;
   } else {
     activateAcBtn.disabled = true;

@@ -6,10 +6,7 @@ class DonutMaker {
     this.myDonutX = 0;
     this.donutXCost = 10;
   }
-  //click add/buy buttons
-  // activateAutoclicker(){
-  //   if(this.myAutoClickers>=1) this.autoClick();
-  // }
+
   clickDonutButton() {
     this.myDonuts += 1 * this.getDonutXValue();
   }
@@ -34,7 +31,7 @@ class DonutMaker {
     return Math.round(this.myDonuts);
   }
   returnAutoClickers() {
-    return (this.myAutoClickers);
+    return this.myAutoClickers;
   }
   returnDonutX() {
     return Math.round(this.myDonutX);
@@ -45,8 +42,8 @@ class DonutMaker {
   getDonutXCost() {
     return Math.round(this.donutXCost);
   }
-  getDonutXValue(){
-    return Math.pow(1.2,this.myDonutX);
+  getDonutXValue() {
+    return Math.pow(1.2, this.myDonutX);
   }
 
   //increases
@@ -59,7 +56,6 @@ class DonutMaker {
   increaseDonutXDonutCount() {
     return this.myDonuts + Math.pow(1.2, this.myDonutX);
   }
-
 
   //clicker calculations-sufficient funds
   subtractDonutsToBuyAutoClicker() {
@@ -74,10 +70,9 @@ class DonutMaker {
   insufficientFundsX() {
     return this.myDonuts < this.donutXCost;
   }
-  insufficientClickersToActivate(){
+  insufficientClickersToActivate() {
     return this.myAutoClickers;
   }
-  
 
   autoClickerFundsChecker() {
     if (this.insufficientFunds()) {
@@ -93,12 +88,17 @@ class DonutMaker {
       this.buyDonutX();
     }
   }
-  activateAcChecker(){
-    if(!this.myAutoClickers>=1){
-      throw new Error('')
-    } else{
+  activateAcChecker() {
+    if (!this.myAutoClickers >= 1) {
+      throw new Error("");
+    } else {
       this.autoClick();
     }
+  }
+  resetGame() {
+    this.myDonuts = 0;
+    this.myAutoClickers = 0;
+    this.myDonutX = 0;
   }
 }
 export default DonutMaker;

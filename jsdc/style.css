@@ -1,0 +1,182 @@
+.aboutClass {
+  background-color: mediumorchid;
+  border: 8px;
+  border-style: double;
+  padding: 7px;
+}
+.acAmount {
+  padding: 7px;
+}
+.activateAc {
+  display: flex;
+  flex-direction: row;
+  padding: 7px;
+  width: fit-content;
+  border-radius: 10px;
+  background-color: aqua;
+  color: black;
+}
+.autoClicker {
+  display: flex;
+  flex-direction: column;
+  padding: 17px;
+  background-color: mediumorchid;
+  color: black;
+}
+.buyAutoClicker {
+  display: flex;
+  flex-direction: row;
+  padding: 17px;
+  max-width: fit-content;
+  border-radius: 10px;
+  background-color: aqua;
+  color: black;
+}
+.buyDonutX {
+  display: flex;
+  flex-direction: row;
+  padding: 17px;
+  width: fit-content;
+  border-radius: 10px;
+  background-color: aqua;
+  color: black;
+}
+.cookieClass {
+  background-color: mediumorchid;
+  border: 8px;
+  border-style: double;
+  justify-content: left;
+  padding: 7px;
+}
+.confetti {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  top: 10%;
+  left: 50%;
+  margin: -2px 0 0 -2px;
+  opacity: 0;
+  background: var(--color);
+  transform: translate(var(--endX), var(--endY)) scale(var(--s, 1));
+  animation: confetti 1s ease-out 1s forwards;
+}
+@keyframes confetti {
+  from {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+.donut {
+  display: flex;
+  flex-direction: column;
+  padding: 17px;
+  background-color: mediumorchid;
+  color: black;
+}
+#donutClickImage {
+  width: 50px;
+  height: 50px;
+}
+#donutImage {
+  width: 650px;
+}
+.donutClicker {
+  display: flex;
+  flex-direction: row;
+  padding: 17px;
+  max-width: max-content;
+  border-radius: 10px;
+  background-color: aqua;
+  color: black;
+}
+.donutAmount {
+  padding: 7px;
+}
+.dXAmount {
+  padding: 7px;
+}
+.navMenu {
+  padding: 7px;
+}
+.donutX {
+  display: flex;
+  flex-direction: column;
+  padding: 17px;
+  background-color: mediumorchid;
+  color: black;
+}
+.displayDonuts {
+  padding: 6px;
+}
+.displayAc {
+  padding: 6px;
+}
+.displayDx {
+  padding: 6px;
+}
+.displayDxValue {
+  padding: 6px;
+}
+.fredClass {
+  background-color: mediumorchid;
+  border: 8px;
+  border-style: double;
+  justify-content: left;
+  padding: 7px;
+}
+#gameDetails {
+  padding: 12px;
+  position: relative;
+  float: top;
+  flood-opacity: 22%;
+}
+#hs {
+  width: 200px;
+  height: 300px;
+}
+#hsAside {
+  padding: 12px;
+  position: relative;
+  float: left;
+}
+header {
+  padding: 7px;
+  border-radius: 10px;
+  background-color: aqua;
+  opacity: 0.89;
+}
+#home {
+  border-radius: 10px;
+  width: fit-content;
+  padding: 7px;
+}
+.navBtn {
+  border-radius: 10px;
+  width: fit-content;
+  padding: 7px;
+}
+.navMenu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 6px;
+}
+.mainGameButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.mainHeader {
+  display: grid;
+  grid-template-columns: max-content;
+  padding: 6px;
+}
+#myGame {
+  background-color: aqua;
+  border-radius: 10px;
+  width: fit-content;
+  padding: 7px;
+}
+.userButtons {
+  padding: 6px;
+}

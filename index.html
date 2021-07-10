@@ -4,10 +4,111 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="jsdc\style.css">
     <title>Donut Clicker</title>
+    <style>
+      body {
+        background-image: url('images\setyaki-irham-VFZHLMlHW1M-unsplash.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+      }
+      </style>
   </head>
   <body>
-    <div class="container"></div>
-    <script src="./index.js"></script>
+    <div class="container">
+      
+      <header>
+        <nav class="navMenu">
+          <button id="home">Home</button>
+          <button class="navBtn" id="fredButton">Fred The Baker & Co.</button>
+          <button class="navBtn" id="cookieButton">Cookie Clicker 2020 &copy;</button>
+          <button class="navBtn" id="myButton">About The Creator</button>
+        </nav>
+        <aside id="gameDetails">
+          <div class="myWallet">
+          My Wallet: <span id="money"></span>
+          </div>
+          <div class="coffee">
+            Cups of Java: <span id="java"></span>
+          </div>
+        </aside>
+        <section class="gameOptions">
+          <select name="MainMenu" id="myGame">
+            <option value="0" id="menu">Freds Menu</option>
+            <option value="1" id="newGame">New Game</option>
+            <option value="2" id="saveGame">Save Game</option>
+            <option value="3" id="buySprinkles">Buy Sprinkles</option>
+            <option value="4" id="buyCoffee">Buy Coffee</option>
+            <option value="5" id="payItForward" >Pay it Forward</option>
+          </select>
+          <div id="aNewGame"></div>
+        </section>
+      </header>
+     
+      <div class="fredClass" hidden>
+        <h1>Fred The Baker Baking Co.</h1>
+        <a  id="fredsBio">
+          Fred The Baker Baking Company&copy; has been in service for over 50 years,
+          and features the infamous 'Mushpuppy Donut', if you haven't tried
+          one you are really missing out! As part of this long tenured history
+          of service to the North East Ohio area, Fred has invited you all to
+          partake in this fun game to really send him into retirement with a
+          bang, as well as keep his donut-making alive long after hes retired.
+        </a>
+      </div>
+
+      <div class="cookieClass" hidden>
+        <a  id="ccBio">
+          <h1>Cookie Clicker est. 2020</h1>
+          The inspiration for Donut maker comes from a game started in 2020
+          called Cookie Clicker&copy;! In Cookie Clicker, users are able to click
+          to earn cookies, with rewards for a certain amount of clicks as well as all types of bells and whistles to make the game enjoyable for the user. Therefore, in rememberance of Cookie Clicker the 2021 Spring Cohort presents to you Donut-Maker&copy;
+        </a>
+      </div>
+      
+      <div class="aboutClass" hidden id="myBio">
+        <a>
+          <h1>About The Creator</h1>
+          <p id="myInfo">
+           <h2>Jordan Erik Easter</h2> 
+           <aside id="hsAside"><img src="wcci621-004.jpg" id="hs"></aside>
+           <h3> Email:jordaneaster222@icloud.com</h3>
+            <a href="https://github.com/jordaneaster">GitHub</a>
+          <a href="https://www.linkedin.com/in/jordan-erik-easter/">LinkedIn</a>
+          </p>
+        </a>
+      </div>
+    </div>
+    <main class="mainGameButtons" style="position: relative; top:130px; left: -40px; " >
+      <section class="donut" style="border: 8px; border-style: ridge; border-color: pink;">
+        <button class="donutClicker"> <img src="images\Donutclick.png" id="donutClickImage">
+        Click To Make A Donut
+      </button>
+      <span class="displayDonuts">My Donuts:</span>
+      <div class="donutAmount">
+      </div>
+      </section>
+      <section class="autoClicker" style="border: 8px; border-style: ridge; border-color: pink;" >
+        <button class="buyAutoClicker" disabled>
+          Buy Auto Clicker
+        </button>
+        <span class="displayAc">My Auto Clickers:</span> 
+        <div class="acAmount"></div>
+        <button class="activateAc" disabled>Activate Auto Clicker</button>
+      </section>
+      <section class="donutX" style="border: 8px; border-style: ridge; border-color: pink;">
+        <button class="buyDonutX" disabled>
+          Buy Donut Multiplier
+        </button>
+        <p>DonutX Value:</p>
+        <span class="displayDxValue"></span>
+        <span class="displayDx">My DonutX:</span>
+        <div class="dxAmount">
+        </div>
+      </section>
+    </main>
+    <script src="jsdc\index.js"></script>
   </body>
 </html>
